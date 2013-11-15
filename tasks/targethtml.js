@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         var contents = grunt.file.read(src);
 
         if (contents) {
-          contents = contents.replace(new RegExp('<!--[\\[\\(]if target (.*?)[\\]\\)]>(<!-->)?([\\s\\S]*?)(<!--)?<![\\[\\(]endif[\\]\\)]-->', 'g'), function(match, $1, $2, $3) {
+          contents = contents.replace(new RegExp('<!--[\\[\\(]if target (.*?)[\\]\\)]>(<!-->)?([\\s\\S]*?)(<!--)?<![\\[\\(]end if[\\]\\)]-->', 'g'), function(match, $1, $2, $3) {
             // check if it's really targeted
             if (!conditionalParser(target, esprima.parse($1).body[0].expression)) {
               return '';
